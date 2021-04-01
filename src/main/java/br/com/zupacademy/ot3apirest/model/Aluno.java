@@ -18,8 +18,7 @@ public class Aluno {
     public Aluno(){
     }
 
-    public Aluno(Long id, String nome, String email, String cpf) {
-        this.id = id;
+    public Aluno(String nome, String email, String cpf) {
         this.nome = nome;
         this.email = email;
         this.cpf = cpf;

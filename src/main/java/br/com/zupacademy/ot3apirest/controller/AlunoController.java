@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -33,9 +34,8 @@ public class AlunoController {
     }
 
     @PostMapping
-    public Aluno cadastrarNovoAluno(@RequestBody Aluno aluno) {
-
-        return alunoRepository.save(aluno);
+    public ResponseEntity<AlunoResponse> cadastrarNovoAluno(@RequestBody @Valid AlunoRequest alunoRequest) {
+        return ResponseEntity.ok(new AlunoResponse(alunoRepository.save(alunoRequest.converter())));
     }
 
     @DeleteMapping("/{id}")
@@ -48,6 +48,4 @@ public class AlunoController {
         }
         return ResponseEntity.notFound().build();
     }
-
-
 }
